@@ -1,0 +1,57 @@
+  <nav class="navbar navbar-dark bg-primary">
+    <a class="navbar-brand" href="/">
+      Maestro de Plantillas de Correo
+    </a>
+  </nav>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 mt-4">
+
+        <div class="card mt-4">
+          <div class="card-body">
+            <div class="card-title">
+              Nuevo Item
+            </div>
+            <div class="form-group">
+              <input type="text" [(ngModel)]="selectItem.rucEmpresa" placeholder="RUC Empresa" class="form-control" />
+            </div>
+            <div class="form-group">
+              <input type="text" [(ngModel)]="selectItem.tipoDocumento" placeholder="Tipo Documento" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="text" [(ngModel)]="selectItem.asunto" placeholder="Asunto" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="text" [(ngModel)]="selectItem.formatoNombreXML" placeholder="Formato Nombre XML" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="text" [(ngModel)]="selectItem.formatoNombrePDF" placeholder="Formato Nombre PDF" class="form-control" />
+            </div>
+            <button (click)="agregaOactualiza()" class="btn btn-primary">
+              Guardar
+            </button>
+            <button *ngIf="selectItem.id !== 0" (click)="borrar()" class="btn btn-danger">
+              Borrar
+            </button>
+          </div>
+        </div>
+
+        <ul class="list-group">
+            <li *ngFor="let item of templateMailArray" 
+            class="list-group-item list-group-item-action" 
+            (click)="editar(item)"
+            [class.active]="item==selectItem"
+            >
+              <span class="badge badge-primary">{{item.id}}</span>
+              {{item.rucEmpresa}} - {{ item.tipoDocumento }} 
+            </li>
+        </ul>
+
+      </div>
+
+
+    </div>
+  </div>
+  
+  
